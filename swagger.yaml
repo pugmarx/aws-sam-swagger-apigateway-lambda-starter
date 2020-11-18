@@ -43,12 +43,12 @@ paths:
         type: "aws"
         httpMethod: "POST"
         # Replace AWS_REGION and ACCOUNT_ID in uri
-        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:AWS_REGION:ACCOUNT_ID:function:PostPetFunction/invocations"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:ACCOUNT_ID:function:PostPetFunction/invocations"
         responses:
           default:
             statusCode: 200
-        requestTemplates:
-          application/json: "{\r\n  \"method\": \"$context.httpMethod\",\r\n  \"body\" : \"$input.body\",\r\n  \"headers\": {\r\n    #foreach($param in $input.params().header.keySet())\r\n    \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\" #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"queryParams\": {\r\n    #foreach($param in $input.params().querystring.keySet())\r\n    \"$param\": \"$util.escapeJavaScript($input.params().querystring.get($param))\" #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"pathParams\": {\r\n    #foreach($param in $input.params().path.keySet())\r\n    \"$param\": \"$util.escapeJavaScript($input.params().path.get($param))\" #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  }  \r\n}"
+        # requestTemplates:
+        #   application/json: "{\r\n  \"method\": \"$context.httpMethod\",\r\n  \"body\" : \"$input.body\",\r\n  \"headers\": {\r\n    #foreach($param in $input.params().header.keySet())\r\n    \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\" #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"queryParams\": {\r\n    #foreach($param in $input.params().querystring.keySet())\r\n    \"$param\": \"$util.escapeJavaScript($input.params().querystring.get($param))\" #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"pathParams\": {\r\n    #foreach($param in $input.params().path.keySet())\r\n    \"$param\": \"$util.escapeJavaScript($input.params().path.get($param))\" #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  }  \r\n}"
   /pet/{petId}:
     get:
       tags:
@@ -86,7 +86,7 @@ paths:
         type: "aws"
         httpMethod: "POST"
         # Replace AWS_REGION and ACCOUNT_ID in uri
-        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:AWS_REGION:ACCOUNT_ID:function:GetPetFunction/invocations"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:ACCOUNT_ID:function:GetPetFunction/invocations"
         responses:
           default:
             statusCode: 200

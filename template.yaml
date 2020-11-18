@@ -40,3 +40,7 @@ Resources:
             Method: GET
       Policies:
         - AWSLambdaBasicExecutionRole
+Outputs:
+  ProdDataEndpoint:
+    Description: "API Prod stage endpoint"
+    Value: !Sub "https://${PetStoreApiGateway}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
